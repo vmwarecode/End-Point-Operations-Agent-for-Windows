@@ -1,0 +1,8 @@
+name: "auto-generated-pkg-ae04cc65-fb4d-4c83-a4b7-ef0aadf99f82"
+productVersion: "7.3.0-SNAPSHOT"
+data:
+- locator: "software-component/Software.EPOpsWinAgent.yaml"
+  name: "EpOps Windows Agent"
+  description: "Installs the Endpoint Operations agent for monitoring by vRealize\
+    \ Operations Manager"
+exportTime: "2017-12-30T19:52:54.981Z"

@@ -1,0 +1,317 @@
+'@type': "SoftwareComponentType"
+createdDate: "2017-05-07T13:00:06.132Z"
+lastUpdated: "2017-12-30T18:23:14.418Z"
+id: "Software.EPOpsWinAgent"
+name: "EpOps Windows Agent"
+description: "Installs the Endpoint Operations agent for monitoring by vRealize Operations\
+  \ Manager"
+publishStatus: "PUBLISHED"
+publishStatusName: "Published"
+schema:
+  fields:
+  - id: "serveraddress"
+    label: "serveraddress"
+    description: "Location of vROps Master or cluster address."
+    dataType:
+      type: "primitive"
+      typeId: "STRING"
+    state:
+      dependencies: []
+      facets:
+      - type: "derivedValue"
+        value:
+          type: "constant"
+          value:
+            type: "string"
+            value: "vrops.domain.com"
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+    isMultiValued: false
+  - id: "password"
+    label: "password"
+    description: "Password to use to register the agent."
+    dataType:
+      type: "primitive"
+      typeId: "SECURE_STRING"
+    state:
+      dependencies: []
+      facets:
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+      - type: "derivedValue"
+        value:
+          type: "constant"
+          value:
+            type: "secureString"
+            value: "VMware1!"
+      - type: "encrypted"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+    isMultiValued: false
+  - id: "sharepassword"
+    label: "sharepassword"
+    description: "SMB share password"
+    dataType:
+      type: "primitive"
+      typeId: "SECURE_STRING"
+    state:
+      dependencies: []
+      facets:
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+      - type: "derivedValue"
+        value:
+          type: "constant"
+          value:
+            type: "secureString"
+            value: "VMware1!"
+      - type: "encrypted"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+    isMultiValued: false
+  - id: "sharefile"
+    label: "sharefile"
+    description: "Name of the EpOps agent package in EXE format."
+    dataType:
+      type: "primitive"
+      typeId: "STRING"
+    state:
+      dependencies: []
+      facets:
+      - type: "derivedValue"
+        value:
+          type: "constant"
+          value:
+            type: "string"
+            value: "vRealize-Endpoint-Operations-Management-Agent-x86-64-win-6.6.1-6091118.exe"
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+    isMultiValued: false
+  - id: "host"
+    label: "Container"
+    description: ""
+    dataType:
+      type: "ref"
+      componentTypeId: "com.vmware.csp.iaas.blueprint.service"
+      classId: "Infrastructure.Machine.Schema"
+      label: "Machine"
+    state:
+      dependencies: []
+      facets:
+      - type: "visible"
+        value:
+          type: "constantClause"
+          value:
+            type: "boolean"
+            value: false
+      - type: "internal"
+        value:
+          type: "constantClause"
+          value:
+            type: "boolean"
+            value: true
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+    isMultiValued: false
+  - id: "certthumbprint"
+    label: "certthumbprint"
+    description: "Thumbprint of the vROps certificate. If the certificate has not\
+      \ been replaced, the thumbprint can be viewed by logging into https://<vropsFQDN>/admin\
+      \ and clicking the gold medallion in the upper-right of the screen. The second\
+      \ listed thumbprint is the one needed here."
+    dataType:
+      type: "primitive"
+      typeId: "STRING"
+    state:
+      dependencies: []
+      facets:
+      - type: "derivedValue"
+        value:
+          type: "constant"
+          value:
+            type: "string"
+            value: "A6:CA:42:98:EE:6F:04:11:2F:B8:53:FD:70:12:68:47:0E:68:A6:D9"
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+    isMultiValued: false
+  - id: "shareusername"
+    label: "shareusername"
+    description: "SMB share username (DOMAIN\\User)"
+    dataType:
+      type: "primitive"
+      typeId: "STRING"
+    state:
+      dependencies: []
+      facets:
+      - type: "derivedValue"
+        value:
+          type: "constant"
+          value:
+            type: "string"
+            value: "domain\\user"
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+    isMultiValued: false
+  - id: "sharepathname"
+    label: "sharepathname"
+    description: "SMB share path (\\\\server\\share)"
+    dataType:
+      type: "primitive"
+      typeId: "STRING"
+    state:
+      dependencies: []
+      facets:
+      - type: "derivedValue"
+        value:
+          type: "constant"
+          value:
+            type: "string"
+            value: "\\\\server.domain.com\\data"
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+    isMultiValued: false
+  - id: "username"
+    label: "username"
+    description: "Username to register against vROps. Must have permissions to manage\
+      \ EpOps agents."
+    dataType:
+      type: "primitive"
+      typeId: "STRING"
+    state:
+      dependencies: []
+      facets:
+      - type: "derivedValue"
+        value:
+          type: "constant"
+          value:
+            type: "string"
+            value: "admin"
+      - type: "mandatory"
+        value:
+          type: "constant"
+          value:
+            type: "boolean"
+            value: true
+    isMultiValued: false
+containerFieldId: "host"
+lifecycleTasks:
+- createdDate: "2017-05-07T13:00:06.143Z"
+  lastUpdated: "2017-12-30T18:23:14.419Z"
+  script:
+    scriptContent: "######Accept unsigned certificates.\nadd-type @\"\n    using System.Net;\n\
+      \    using System.Security.Cryptography.X509Certificates;\n    public class\
+      \ TrustAllCertsPolicy : ICertificatePolicy {\n        public bool CheckValidationResult(\n\
+      \            ServicePoint srvPoint, X509Certificate certificate,\n         \
+      \   WebRequest request, int certificateProblem) {\n            return true;\n\
+      \        }\n    }\n\"@\n[System.Net.ServicePointManager]::CertificatePolicy\
+      \ = New-Object TrustAllCertsPolicy\n######Stop the EpOps service before proceeding\n\
+      Stop-Service -Name \"*End Point Operations*\"\n######Get the hostname to use\
+      \ in the REST request.\n$thisvm = hostname\n######Start the work.\n$secpw =\
+      \ ConvertTo-SecureString $password -AsPlainText -Force\n$cred = New-Object PSCredential\
+      \ -ArgumentList $username,$secpw\n$data = Invoke-RestMethod -Method GET -Uri\
+      \ https://$serveraddress/suite-api/api/resources/?name=$thisvm -Credential $cred\n\
+      ##############\n#Get the parent resource ID of the top-level object which is\
+      \ either WINDOWS or LINUX.\n$parentObject = ($data.resources.resource | where\
+      \ {$_.resourceKey.resourceKindKey -eq \"WINDOWS\"}).identifier\n#Determine all\
+      \ the child objects (EpOps agent, custom service/process monitoring, etc.)\n\
+      $childrenOfWindows = Invoke-RestMethod -Method GET -Uri https://$serveraddress/suite-api/api/resources/$parentObject/relationships/children\
+      \ -Credential $cred\n$allChildren = $childrenOfWindows.'resource-relation'.resource.identifier\n\
+      foreach ($child in $allChildren)\n    {\n    Write-Output \"Removing $child.\"\
+      \n    Invoke-RestMethod -Method DELETE -Uri https://$serveraddress/suite-api/api/resources/$child\
+      \ -Credential $cred -ErrorVariable $errors -ErrorAction SilentlyContinue\n \
+      \   }\n#Finally, remove the parent object.\nWrite-Output \"Lastly, removing\
+      \ the parent $parentObject.\"\nInvoke-RestMethod -Method DELETE -Uri https://$serveraddress/suite-api/api/resources/$parentObject\
+      \ -Credential $cred -ErrorVariable $errors -ErrorAction SilentlyContinue\nWrite-Output\
+      \ \"Errors are as follows: $errors\""
+    isRebootAfter: false
+    scriptTypeId: "powershell"
+  taskDescriptorRef:
+    id: "TEARDOWN"
+    label: "Uninstall"
+- createdDate: "2017-05-07T13:00:06.142Z"
+  lastUpdated: "2017-12-30T18:23:14.419Z"
+  script:
+    scriptContent: "C:\\ep-agent\\bin\\ep-agent.bat setup\nStart-Sleep -s 15\nC:\\\
+      ep-agent\\bin\\ep-agent.bat status"
+    isRebootAfter: false
+    scriptTypeId: "powershell"
+  taskDescriptorRef:
+    id: "START"
+    label: "Start"
+- createdDate: "2017-05-07T13:00:06.144Z"
+  lastUpdated: "2017-12-30T18:23:14.419Z"
+  script:
+    scriptContent: "#####################################\n#Installs the EpOps agent\
+      \ on a Windows system.\n#The agent installer must be present on a network share\
+      \ accessible by the deployed VM.\n#This blueprint assumes it will be installing\
+      \ the Windows EXE package containing JRE.\n#It does not support installation\
+      \ of the ZIP or non-JRE version of the EpOps agent.\n#####################################\n\
+      ####Download package locally\n$secpassword = ConvertTo-SecureString -String\
+      \ $sharepassword -AsPlainText -Force\n$cred = New-Object -TypeName PSCredential\
+      \ -ArgumentList $shareusername,$secpassword\nNew-PSDrive -Name T -PSProvider\
+      \ FileSystem -Root $sharepathname -Credential $cred\nIf (Test-Path T:\\$sharefile)\n\
+      \t{Write-Output \"The remote share was mounted and file was found.\"}\nElse\n\
+      \t{Write-Output \"The share could not be mounted. Check your credentials, path,\
+      \ and filename before trying again. The script will exit.\"\n\texit 1}\nCopy-Item\
+      \ T:\\$sharefile C:\\epops.exe\n####Install the agent\nC:\\epops.exe /VERYSILENT\
+      \ -serverAddress $serveraddress -username $username -password $password -serverCertificateThumbprint\
+      \ \"$certthumbprint\"\n####Wait while it starts\nStart-Sleep -s 30\n####Verify\
+      \ agent is running and remove installer, PSDrive if it is.\n$epopsservicename\
+      \ = Get-Service -Name \"End Point Operations Management Agent\"\nif ($epopsservicename.Status\
+      \ -ne \"Running\"){\nWrite-Output \"End Point Operations agent is not running.\"\
+      \nexit 1}\nelse{\nWrite-Output \"End Point Operations agent is installed!\"\n\
+      Start-Sleep -s 15\nRemove-Item C:\\epops.exe -Force\nRemove-PSDrive T\nexit\
+      \ 0}"
+    isRebootAfter: false
+    scriptTypeId: "powershell"
+  taskDescriptorRef:
+    id: "INSTALL"
+    label: "Install"
+- createdDate: "2017-05-07T13:00:06.145Z"
+  lastUpdated: "2017-12-30T18:23:14.419Z"
+  script:
+    scriptContent: "Stop-Service -Name \"*End Point Operations*\"\nWrite-Output \"\
+      EpOps agent has been stopped.\""
+    isRebootAfter: false
+    scriptTypeId: "powershell"
+  taskDescriptorRef:
+    id: "CONFIGURE"
+    label: "Configure"
